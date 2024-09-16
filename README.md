@@ -77,8 +77,13 @@ plt.axis('off')
 
 ```
 image_with_shapes = image.copy()
-cv2.line(image_with_shapes, (0, 0), (image.shape[1], image.shape[0]), (255, 0, 0), 2)  # Line
-cv2.circle(image_with_shapes, (image.shape[1] // 2, image.shape[0] // 2), 50, (0, 255, 0), 2)  # Circle
+image_with_shapes.shape
+```
+![image](https://github.com/user-attachments/assets/28649ac1-732c-40bd-97f2-dd1a95fcfdbf)
+
+```
+cv2.line(image_with_shapes, (0, 0), (332, 300), (255, 0, 0), 2)  # Line
+cv2.circle(image_with_shapes, (332 // 2, 300 // 2), 50, (0, 255, 0), 2)  # Circle
 cv2.rectangle(image_with_shapes, (50, 50), (150, 150), (0, 0, 255), 2)  # Rectangle
 cv2.putText(image_with_shapes, 'OpenCV', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)  # Text
 
@@ -144,7 +149,7 @@ plt.axis('off')
 
 ### v)Image Resizing
 ```
-resized_image = cv2.resize(image, (image.shape[1] // 2, image.shape[0] // 2))
+resized_image = cv2.resize(image, (332 // 2,300 // 2))
 plt.subplot(3, 3, 8)
 plt.imshow(cv2.cvtColor(resized_image, cv2.COLOR_BGR2RGB))
 plt.title('Resized Image')
