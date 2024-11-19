@@ -62,144 +62,183 @@ o	Save the final modified image to your local directory.
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-image_path = 'dog.jpg' 
+# Load an image from your local directory
+image_path = 'dog.jpg'  # Replace with your image path
 image = cv2.imread(image_path)
-plt.figure(figsize=(10, 8))
-plt.subplot(3, 3, 1)
+# Step 1: Display the Original Image
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.title('Original Image')
 plt.axis('off')
-```
-![image](https://github.com/user-attachments/assets/67ec6190-7635-4614-a92a-7aeda2453ec0)
+plt.show()
 
+```
+![image](https://github.com/user-attachments/assets/39578b12-bb89-4d39-b65d-c469b33c4209)
 
 ### ii)Draw Shapes and Add Text
 
 ```
-image_with_shapes = image.copy()
-image_with_shapes.shape
-```
-![image](https://github.com/user-attachments/assets/28649ac1-732c-40bd-97f2-dd1a95fcfdbf)
 
-```
-cv2.line(image_with_shapes, (0, 0), (332, 300), (255, 0, 0), 2)  # Line
-cv2.circle(image_with_shapes, (332 // 2, 300 // 2), 50, (0, 255, 0), 2)  # Circle
-cv2.rectangle(image_with_shapes, (50, 50), (150, 150), (0, 0, 255), 2)  # Rectangle
-cv2.putText(image_with_shapes, 'OpenCV', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)  # Text
-
-plt.subplot(3, 3, 2)
-plt.imshow(cv2.cvtColor(image_with_shapes, cv2.COLOR_BGR2RGB))
-plt.title('Image with Shapes and Text')
+# Step 2: Draw Shapes and Add Text
+image_with_line = image.copy()
+cv2.line(image_with_line, (0, 0), (image.shape[1], image.shape[0]), (255, 0, 0), 2)
+plt.figure(figsize=(6, 4))
+plt.imshow(cv2.cvtColor(image_with_line, cv2.COLOR_BGR2RGB))
+plt.title('Image with Line')
 plt.axis('off')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/4f77b50b-c1c3-475a-9b4d-2fa64351584d)
+
 ```
 
-![image](https://github.com/user-attachments/assets/257ec635-0eb4-4617-9a0a-5658932e9f24)
+image_with_circle = image.copy()
+cv2.circle(image_with_circle, (image.shape[1] // 2, image.shape[0] // 2), 100, (0, 255, 0), 2)
+plt.figure(figsize=(6, 4))
+plt.imshow(cv2.cvtColor(image_with_circle, cv2.COLOR_BGR2RGB))
+plt.title('Image with Circle')
+plt.axis('off')
+plt.show()
 
+```
+![image](https://github.com/user-attachments/assets/cc49f0df-430c-41ee-aab0-dc8c521d1027)
+```
+image_with_rectangle = image.copy()
+cv2.rectangle(image_with_rectangle, (100, 50), (250, 250), (0, 0, 255), 2)
+plt.figure(figsize=(6, 4))
+plt.imshow(cv2.cvtColor(image_with_rectangle, cv2.COLOR_BGR2RGB))
+plt.title('Image with Rectangle')
+plt.axis('off')
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/1a1edabe-b47c-4abb-be31-2d9e92d98a2c)
+```
+image_with_text = image.copy()
+cv2.putText(image_with_text, 'OpenCV', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+plt.figure(figsize=(6, 4))
+plt.imshow(cv2.cvtColor(image_with_text, cv2.COLOR_BGR2RGB))
+plt.title('Image with Text')
+plt.axis('off')
+plt.show()
+
+```
+
+![image](https://github.com/user-attachments/assets/6c1dffe7-b38d-4bc5-ad88-e8c78a616dcb)
 
 ### iii)Image Color Conversion
 ```
-# Convert to HSV
+# Step 3: Image Color Conversion
 image_hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-# Convert to GRAY
-image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-# Convert to YCrCb
-image_ycrcb = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
-# Convert HSV back to RGB
-image_rgb_from_hsv = cv2.cvtColor(image_hsv, cv2.COLOR_HSV2BGR)
-
-
-plt.subplot(3, 3, 3)
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(image_hsv, cv2.COLOR_BGR2RGB))
 plt.title('Image in HSV')
 plt.axis('off')
-
-plt.subplot(3, 3, 4)
+plt.show()
+```
+![image](https://github.com/user-attachments/assets/6f9b9bb3-7859-4ca9-8323-c5487b8019d5)
+```
+image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+plt.figure(figsize=(6, 4))
 plt.imshow(image_gray, cmap='gray')
 plt.title('Image in GRAY')
 plt.axis('off')
+plt.show()
+```
 
-plt.subplot(3, 3, 5)
+![image](https://github.com/user-attachments/assets/ee4834df-2f4f-4af6-8ddb-94041e35cf58)
+```
+
+image_ycrcb = cv2.cvtColor(image, cv2.COLOR_BGR2YCrCb)
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(image_ycrcb, cv2.COLOR_BGR2RGB))
 plt.title('Image in YCrCb')
 plt.axis('off')
+plt.show()
 
-plt.subplot(3, 3, 6)
-plt.imshow(cv2.cvtColor(image_rgb_from_hsv, cv2.COLOR_BGR2RGB))
-plt.title('HSV to RGB')
-plt.axis('off')
 ```
+![image](https://github.com/user-attachments/assets/2a34e3d5-fc4d-41dd-9859-dee2b096a51a)
 
-![image](https://github.com/user-attachments/assets/79e8273f-5724-46da-8181-35704707f85f)
 
 ### iv)Access and Manipulate Image Pixels
-
 ```
-pixel_value = image[100, 100]  # Access pixel value at (100, 100)
+# Step 4: Access and Manipulate Image Pixels
+pixel_value = image[100, 100]
 print(f'Pixel value at (100, 100): {pixel_value}')
-image[200, 200] = [255, 255, 255]  # Set pixel color at (200, 200) to white
-
-# Display updated image with manipulated pixels
-plt.subplot(3, 3, 7)
+image[200, 200] = [255, 255, 255]
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 plt.title('Image with Manipulated Pixels')
 plt.axis('off')
+plt.show()
 ```
-
-![image](https://github.com/user-attachments/assets/97830fbe-635c-4203-b250-6da377cf43a1)
+![image](https://github.com/user-attachments/assets/c1518625-b8f1-423b-99a0-2e06d1c61b4b)
 
 ### v)Image Resizing
 ```
-resized_image = cv2.resize(image, (332 // 2,300 // 2))
-plt.subplot(3, 3, 8)
+# Step 5: Image Resizing
+resized_image = cv2.resize(image, (image.shape[1] // 2, image.shape[0] // 2))
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(resized_image, cv2.COLOR_BGR2RGB))
 plt.title('Resized Image')
 plt.axis('off')
+plt.show()
 ```
-![image](https://github.com/user-attachments/assets/1ada6194-39f2-473f-99bc-d9b86edc6f2c)
+
+
+![image](https://github.com/user-attachments/assets/7637f4e7-edd6-4b50-ac46-434018ff1c38)
 
 
 ### vi)Image Cropping
 ```
+# Step 6: Image Cropping
 cropped_image = image[50:150, 50:150]
-plt.subplot(3, 3, 9)
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))
 plt.title('Cropped Image')
 plt.axis('off')
+plt.show()
 
 ```
-![image](https://github.com/user-attachments/assets/172da625-36fa-4907-b20b-0d0b64f7c4d4)
+![image](https://github.com/user-attachments/assets/573180ad-f8d3-4997-9f2b-2112e47c7de1)
 
 
 ### vii)Image Flipping
-```
-flipped_image_horizontal = cv2.flip(image, 1)  # Horizontal flip
-flipped_image_vertical = cv2.flip(image, 0)    # Vertical flip
 
-plt.figure(figsize=(10, 8))
-plt.subplot(1, 2, 1)
+```
+# Step 7: Image Flipping
+flipped_image_horizontal = cv2.flip(image, 1)
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(flipped_image_horizontal, cv2.COLOR_BGR2RGB))
 plt.title('Flipped Horizontally')
 plt.axis('off')
+plt.show()
+```
 
-plt.subplot(1, 2, 2)
+![image](https://github.com/user-attachments/assets/5b09a56c-4e7e-4286-ad8c-efa003c13240)
+```
+flipped_image_vertical = cv2.flip(image, 0)
+plt.figure(figsize=(6, 4))
 plt.imshow(cv2.cvtColor(flipped_image_vertical, cv2.COLOR_BGR2RGB))
 plt.title('Flipped Vertically')
 plt.axis('off')
+plt.show()
 ```
-
-![image](https://github.com/user-attachments/assets/e5697fdf-4625-4072-9f6e-cba10ded7423)
+![image](https://github.com/user-attachments/assets/d3440ed1-c897-42e3-83a8-be32daa7afcf)
 
 
 
 ### viii)Write and Save the Modified Image
 ```
-output_path = 'modified_image.jpg'
-cv2.imwrite(output_path, image)
-
-plt.show()
-
+# Step 8: Write and Save the Modified Images
+cv2.imwrite('image_with_line.jpg', image_with_line)
+cv2.imwrite('image_with_circle.jpg', image_with_circle)
+cv2.imwrite('image_with_rectangle.jpg', image_with_rectangle)
+cv2.imwrite('image_with_text.jpg', image_with_text)
+cv2.imwrite('resized_image.jpg', resized_image)
+cv2.imwrite('cropped_image.jpg', cropped_image)
+cv2.imwrite('flipped_horizontal.jpg', flipped_image_horizontal)
+cv2.imwrite('flipped_vertical.jpg', flipped_image_vertical)
 ```
-
 
 ## Result:
 Thus the images are read, displayed, and written ,and color conversion was performed  successfully using the python program.
